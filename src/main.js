@@ -9,7 +9,7 @@ import iziToast from 'izitoast';
 import 'izitoast/dist/css/iziToast.min.css';
 
 let form = document.querySelector('form');
-
+hideLoader();
 form.addEventListener('submit', event => {
   event.preventDefault();
   let inputEl = form.querySelector('input');
