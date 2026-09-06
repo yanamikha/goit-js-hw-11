@@ -45,7 +45,6 @@ form.addEventListener('submit', event => {
         return;
       }
       createGallery(images);
-      hideLoader();
     })
     .catch(ex => {
       iziToast.error({
