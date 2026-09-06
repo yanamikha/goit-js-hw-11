@@ -13,20 +13,6 @@ let lightbox = new SimpleLightbox('.gallery a', {
 });
 
 export function createGallery(images) {
-  if (images.length === 0) {
-    let options = {
-      theme: 'dark',
-      position: 'topRight',
-      maxWidth: 432,
-      backgroundColor: '#EF4040',
-      icon: 'fa-solid fa-triangle-exclamation',
-      message:
-        'Sorry, there are no images matching your search query. Please try again!'
-    };
-    iziToast.show(options);
-    return;
-  }
-
   let markup = images.map(function (props) {
     let {
       webformatURL,

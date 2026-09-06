@@ -5,8 +5,8 @@ import 'izitoast/dist/css/iziToast.min.css';
 let API_KEY = '48568808-b5581b6c1359d9abd76100469';
 let BASE_URL = 'https://pixabay.com/api/';
 
-export function getImagesByQuery(query) {
-  return axios
+export async function getImagesByQuery(query) {
+  return await axios
     .get(BASE_URL, {
       params: {
         key: API_KEY,
@@ -17,8 +17,5 @@ export function getImagesByQuery(query) {
       }
     })
     .then(response => response.data.hits)
-    .catch(error => {
-      iziToast.error({ title: 'Error', message: 'Error on load images' });
-      return;
-    });
+    .catch(error => error);
 }
