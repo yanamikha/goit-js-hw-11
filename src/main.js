@@ -48,7 +48,7 @@ form.addEventListener('submit', event => {
     })
     .catch(ex => {
       iziToast.error({
-        title: ex
+        title: ex.message
       });
     })
     .finally(() => {

@@ -53,6 +53,9 @@ export function clearGallery() {
 export function showLoader() {
   let loaderEl = document.querySelector('#loader');
   let loaderTextEl = document.querySelector('#loaderText');
+  if (!loaderEl || !loaderTextEl) {
+    return;
+  }
   loaderTextEl.innerHTML = 'Loading images, please wait...';
   loaderEl.classList.add('loader');
 }

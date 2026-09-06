@@ -16,7 +16,6 @@ export async function getImagesByQuery(query) {
     })
     .then(response => response.data.hits)
     .catch(error => {
-      let err = { message: error.message };
-      return err;
+      throw error;
     });
 }
