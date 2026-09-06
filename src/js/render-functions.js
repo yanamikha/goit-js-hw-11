@@ -3,12 +3,35 @@ import 'simplelightbox/dist/simple-lightbox.min.css';
 import '@fortawesome/fontawesome-free/css/all.css';
 import '@fontsource/montserrat/600.css';
 
-let galleryEl = document.querySelector('ul.gallery');
+let galleryEl;
+let loaderTextEl;
+let loaderEl;
 let lightbox = new SimpleLightbox('.gallery a', {
   captionsData: 'alt',
   captionPosition: 'bottom',
   captionDelay: 250
 });
+
+function getGalleryEl() {
+  if (!galleryEl) {
+    galleryEl = document.querySelector('ul.gallery');
+  }
+  return galleryEl;
+}
+
+function getLoaderTextEl() {
+  if (!loaderTextEl) {
+    loaderTextEl = document.querySelector('#loaderText');
+  }
+  return loaderTextEl;
+}
+
+function getLoaderEl() {
+  if (!loaderEl) {
+    loaderEl = document.querySelector('#loader');
+  }
+  return loaderEl;
+}
 
 export function createGallery(images) {
   let markup = images.map(function (props) {
@@ -38,31 +61,30 @@ export function createGallery(images) {
       </li>
     `;
   });
-  if (galleryEl) {
-    galleryEl.innerHTML = markup.join('');
+  if (getGalleryEl()) {
+    getGalleryEl().innerHTML = markup.join('');
   }
   lightbox.refresh();
 }
 
 export function clearGallery() {
-  if (galleryEl) {
-    galleryEl.innerHTML = '';
+  if (getGalleryEl()) {
+    getGalleryEl().innerHTML = '';
   }
 }
 
 export function showLoader() {
-  let loaderEl = document.querySelector('#loader');
-  let loaderTextEl = document.querySelector('#loaderText');
-  if (!loaderEl || !loaderTextEl) {
+  if (!getLoaderEl() || !getLoaderTextEl()) {
     return;
   }
-  loaderTextEl.innerHTML = 'Loading images, please wait...';
-  loaderEl.classList.add('loader');
+  getLoaderTextEl().innerHTML = 'Loading images, please wait...';
+  getLoaderEl().classList.add('loader');
 }
 
 export function hideLoader() {
-  let loaderEl = document.querySelector('#loader');
-  let loaderTextEl = document.querySelector('#loaderText');
-  loaderTextEl.innerHTML = null;
-  loaderEl.classList.remove('loader');
+  if (!getLoaderEl() || !getLoaderTextEl()) {
+    return;
+  }
+  getLoaderTextEl().innerHTML = null;
+  getLoaderEl().classList.remove('loader');
 }
