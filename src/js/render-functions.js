@@ -1,7 +1,5 @@
 import SimpleLightbox from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
-import iziToast from 'izitoast';
-import 'izitoast/dist/css/iziToast.min.css';
 import '@fortawesome/fontawesome-free/css/all.css';
 import '@fontsource/montserrat/600.css';
 
@@ -40,13 +38,16 @@ export function createGallery(images) {
       </li>
     `;
   });
-
-  galleryEl.innerHTML = markup.join('');
+  if (galleryEl) {
+    galleryEl.innerHTML = markup.join('');
+  }
   lightbox.refresh();
 }
 
 export function clearGallery() {
-  galleryEl.innerHTML = '';
+  if (galleryEl) {
+    galleryEl.innerHTML = '';
+  }
 }
 
 export function showLoader() {

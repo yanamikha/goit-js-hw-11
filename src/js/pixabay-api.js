@@ -1,6 +1,4 @@
 import axios from 'axios';
-import iziToast from 'izitoast';
-import 'izitoast/dist/css/iziToast.min.css';
 
 let API_KEY = '48568808-b5581b6c1359d9abd76100469';
 let BASE_URL = 'https://pixabay.com/api/';
@@ -17,5 +15,8 @@ export async function getImagesByQuery(query) {
       }
     })
     .then(response => response.data.hits)
-    .catch(error => error);
+    .catch(error => {
+      let err = { message: error.message };
+      return err;
+    });
 }
